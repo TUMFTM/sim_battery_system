@@ -1,0 +1,4 @@
+# This is a results folder. Ignore everything in this folder for the git commits.
+*
+*/
+!.gitignore
