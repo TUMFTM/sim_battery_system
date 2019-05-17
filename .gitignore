@@ -1,0 +1,9 @@
+# ignore all autosave files
+*.autosave
+*.asv
+*.original
+
+# ignore Simulink simulation data
+
+slprj/
+*.slxc
