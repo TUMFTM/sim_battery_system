@@ -39,7 +39,7 @@ These are the currently planned features of the simulation framework:
 - [ ] Simulation of **heat fluxes between cells** inside the battery system
 - [ ] Simulating the behavior of **temperature sensors** placed in the battery system
 - [x] Automated **logging, plotting and saving** of simulation results
-- [ ] In-depth **analysis of cell load** using load spectrum analysis
+- [x] In-depth **analysis of cell load** using load spectrum analysis
 
 All the things listed here that are not included as of now will be made available as soon as they are thoroughly tested and streamlined.
 
@@ -92,20 +92,21 @@ Use the following steps to start the simulation:
 2. Set up the system parameters in *parameters\\*
    - Sample Data is provided in `system_parameters.m`
    - Set up the number of cells connected in serial and parallel.
-   - Set up the system's initial state. At least the SOC is needed and - if in consideration the cells temperatures. This must be set for every individual cell!
-   - Set up the parameters for passive balancing  (or disable cell balancing).
+   - Set up the system's initial state. At least the SOC is needed and - if in consideration - the cells temperatures. This must be set for every individual cell!
+   - Set up the parameters for passive balancing (or disable cell balancing).
    - Enable or dissable the thermal simulation and provide the ambient temperatures around each cell. The sample implementation used static ambient temperatures, the model also accepts dynamic imputs. The latter must be provided in the Simulink model.
 3. Provide the load cycle in *load_cycles\\*
    - The variable must be named load_cycle
    - The structure is composed of colummn vectors **`[time [s], voltage [V], current [A]]`**
    - The voltage is just for comparison purposes, only the current is used as simulation input
    - The example implementation uses load data from a single cell and scales that depending on the number of serial and parallel cells. Of course you can directly provide data for your system. In this case edit the scaling in `main_sim_battery_system.m`
-4. Select the things that are logged in the Simulink model `sim_battery_system.slx`
+4. Select the things that are logged in the Simulink model `sim_battery_system.slx` in the subsystem *Monitoring and Logging*
    - Go to the block *Monitoring and Logging* and comment in all signals you need
+   - Go to the block *Load Spectrum Analysis/Classification* and do the same for load spectrum analysis. Further settings for this feature can be found in *parameters\LSA_parameters.m*
 5. Set up the simulation in `main_sim_battery_system.m`
    - Choose the cell and system parameters and the load cycle
    - Choose the simulation step-size and the max. simulation time
-   - Choose if you want plot or save the results
+   - Choose if you want plot or save the results or globally disable logging and load spectrum analysis
 6. Start the simulation
    - If you chose to save your plots and/or simulation results you can find those file in the folder *simulation_results\\* after the simulation
 

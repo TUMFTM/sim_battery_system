@@ -32,17 +32,38 @@ SimPara.t_sim   = load_cycle(end,1)+10000;      % Set end time of simulation in 
 % Saved data is placed in a mat-File with date and time-stamp.
 % Saved plots (as .fig) are placed in a folder with date and timestamp.
 % Data from simulation output can be specified in the simulation model.
+% See: sim_battery_system.slx/Monitoring and Logging/Logging of Variables
 
-SimPara.OutputDataType   = 'single';   % Data type of simulation output. Note: Simulation is always done in double precision
-SimPara.OutputDecimation = 100;        % Log (and therefore plot and save) only every n-th value.
+SimPara.LoggingOutput    = true;        % Log all variables specified in 'sim_battery_system.slx/Monitoring and Logging/Logging of Variables' in timeseries format
+SimPara.OutputDataType   = 'single';    % Data type of simulation output. Note: Simulation is always done in double precision
+SimPara.OutputDecimation = 100;         % Log (and therefore plot and save) only every n-th value.
 
-SimPara.PlotResults      = true;       % Plot all available data (everything that gets logged in the model). If set 'false' there are no plot, or, if plots are saved they are closed after saving.
-SimPara.SavePlots        = false;      % Save all plots in a folder with current time in ..\simulation_results (.fig format)
+SimPara.PlotResults      = true;        % Plot all available data (everything that gets logged in the model). If set 'false' there are no plot, or, if plots are saved they are closed after saving.
+SimPara.SavePlots        = false;       % Save all plots in a folder with current time in ..\simulation_results (.fig format)
 
-SimPara.SaveSettings     = false;      % Save generated parameter structs in the save file
-SimPara.SaveResults      = true;      % Save simulation results in the save file
+SimPara.SaveSettings     = false;       % Save generated parameter structs in the save file
+SimPara.SaveResults      = true;        % Save simulation results in the save file
 
-SimPara.ClearWorkspace   = false;      % Clear workspace after simulation (and saving)
+SimPara.ClearWorkspace   = false;       % Clear workspace after simulation (and saving)
+
+
+%% Load Spectrum Analysis of simulation data
+
+% Perform Load Spectrum Analysis (LSA) on the simulation results.
+
+% This is done during runtime and will massively decrease the amount of
+% logging data, if you turn the timeseries logging of. You find the LSA
+% subsystem here: sim_battery_system.slx/Monitoring and Logging/Load Spectrum Analysis
+% Comment out all values including the subsystems you don't need.
+
+% Note: Especially the three parametric LSA significantly add to the
+% computational load for large battery systems! Test this impact before you
+% turn on everything!
+
+SimPara.LoadSpectra     = false;        % Turn LSA on/off
+
+run parameters/LSA_parameters.m         % Parameters for Load Spectrum Analysis
+
 
 
 %% Calculate the statistical parameter deviation for each cell in the system

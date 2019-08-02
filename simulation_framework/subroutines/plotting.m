@@ -399,6 +399,9 @@ if SimPara.PlotResults == true || SimPara.SavePlots == true
         end
     end
     
+    % Create Plots for load spectrum analysis
+    run('plotting_LSA.m')
+    
     if SimPara.PlotResults == false
         disp('Closing Plots.')
         close all       % No display of plots was wished, so they are closed after saving
