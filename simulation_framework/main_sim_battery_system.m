@@ -39,12 +39,29 @@ SimPara.OutputDataType   = 'single';    % Data type of simulation output. Note: 
 SimPara.OutputDecimation = 100;         % Log (and therefore plot and save) only every n-th value.
 
 SimPara.PlotResults      = true;        % Plot all available data (everything that gets logged in the model). If set 'false' there are no plot, or, if plots are saved they are closed after saving.
-SimPara.SavePlots        = false;       % Save all plots in a folder with current time in ..\simulation_results (.fig format)
+SimPara.SavePlots        = true;       % Save all plots in a folder with current time in ..\simulation_results (.fig format)
 
 SimPara.SaveSettings     = false;       % Save generated parameter structs in the save file
 SimPara.SaveResults      = true;        % Save simulation results in the save file
 
 SimPara.ClearWorkspace   = false;       % Clear workspace after simulation (and saving)
+
+
+%% Thermal system parameters (constant ambient temperatures)
+
+% Enable or disable thermal simulation by setting "true" or "false". 
+% If disabled: T_cell remains constant with the values specified in 'Initial State'.
+% Hint: Enable all thermal system variables with dummy values to avoid errors.
+
+SimPara.thermal_sim_enable = false;  
+
+% Use advanced simulation model to consider thermal interaction between
+% cells. If this is set to "false" only the simple thermal model is used.
+
+% Note: If you set this to 'true' you must provide additional thermal
+% parameters in thermal_system_parameters.m!
+
+SimPara.heat_exchange_enable = false; 
 
 
 %% Load Spectrum Analysis of simulation data
@@ -64,6 +81,18 @@ SimPara.LoadSpectra     = false;        % Turn LSA on/off
 
 run parameters/LSA_parameters.m         % Parameters for Load Spectrum Analysis
 
+
+%% Use temperature sensors submodule
+
+% Simulate temperature sensors in the battery system. Refer to the script
+% called below for further information.
+
+% If you set this value to false nothing regarding the temperature sensors
+% will get simulated so the simulation time is not impacted.
+
+SimPara.TempSensors = false;
+
+run parameters/TempSens_parameters.m
 
 
 %% Calculate the statistical parameter deviation for each cell in the system

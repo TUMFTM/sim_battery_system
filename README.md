@@ -102,7 +102,7 @@ Use the following steps to start the simulation:
    - The example implementation uses load data from a single cell and scales that depending on the number of serial and parallel cells. Of course you can directly provide data for your system. In this case edit the scaling in `main_sim_battery_system.m`
 4. Select the things that are logged in the Simulink model `sim_battery_system.slx` in the subsystem *Monitoring and Logging*
    - Go to the block *Monitoring and Logging* and comment in all signals you need
-   - Go to the block *Load Spectrum Analysis/Classification* and do the same for load spectrum analysis. Further settings for this feature can be found in *parameters\LSA_parameters.m*
+   - Go to the block *Load Spectrum Analysis/Classification* and do the same for load spectrum analysis. Further settings for this feature can be found in `parameters\LSA_parameters.m`
 5. Set up the simulation in `main_sim_battery_system.m`
    - Choose the cell and system parameters and the load cycle
    - Choose the simulation step-size and the max. simulation time

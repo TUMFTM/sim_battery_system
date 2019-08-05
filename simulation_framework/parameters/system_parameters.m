@@ -1,10 +1,7 @@
-%% Thermal system parameters
+%% Electrical Interconnection
 
-
-%% Electrival Interconnection
-
-SysPara.p = 4;  % Number of parallel cells
-SysPara.s = 2;  % Number of serial cells
+SysPara.s = 3;  % Number of serial cells
+SysPara.p = 2;  % Number of parallel cells
 
 
 %% Initial State
@@ -33,28 +30,22 @@ SysPara.BatStateInit.thermal.T_cell    = ones(SysPara.p,SysPara.s) * 25;
 % own balancing resistor. This allows individual balancing resistances per cell. 
 % To represent one resistor per parallel connection use R_bal/BatSys.p
 
-SysPara.Balancing.R       = ones(SysPara.p,SysPara.s) * 33 / SysPara.p;    % Balancing resistance per cell in Ohm
-SysPara.Balancing.U_Delta = 0.01;                                        % Minimum voltage difference between cells to start balancing in V                              
-SysPara.Balancing.U_Limit = 3.8;                                         % Lower voltage limit to allow balancing
-SysPara.Balancing.I_Limit = SysPara.p * 0.5;                              % Upper limit of battery system furrent load to allow balancing in A
+SysPara.Balancing.R       = ones(SysPara.p,SysPara.s) * 33 / SysPara.p;     % Balancing resistance per cell in Ohm
+SysPara.Balancing.U_Delta = 0.01;                                           % Minimum voltage difference between cells to start balancing in V                              
+SysPara.Balancing.U_Limit = 3.8;                                            % Lower voltage limit to allow balancing
+SysPara.Balancing.I_Limit = SysPara.p * 0.5;                                % Upper limit of battery system furrent load to allow balancing in A
 
-SysPara.Balancing.t_Start=0;                                             % Specify simulation time after witch balancing is allowed. Set to 'inf' to disable balancing
+SysPara.Balancing.t_Start=0;                                                % Specify simulation time after witch balancing is allowed. Set to 'inf' to disable balancing
 
 
-%% Thermal system parameters (constant ambient temperatures)
-
-% Enable or disable thermal simulation by setting "true" or "false". 
-% If disabled: T_cell remains constant with the values specified in 'Initial State'.
-% Hint: Enable all thermal system variables with dummy values to avoid errors.
-
-SysPara.thermal.thermal_sim_enable = true; 
+%% Parameters needed for heat exchange with environment (no thermal interaction between cells)
 
 % Simple thermal model. Assume constant ambient temperature around each
 % cell and constant heat transfer coefficient. Again, one value must be
 % specified for each cell. Dynamic inputs can be specified in the
 % simulation model.
 
-SysPara.thermal.T_cell_ambient = ones(SysPara.p,SysPara.s) * 25;   %Ambient temperature around each cell in °C
+SysPara.thermal.T_cell_ambient = ones(SysPara.p,SysPara.s) * 23;   %Ambient temperature around each cell in °C
 
 % As an example, we set the ambient temp. of some outer cells of the system
 % to 23 °C to show the ability of the model to react to different cooling

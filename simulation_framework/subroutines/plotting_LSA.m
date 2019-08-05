@@ -107,7 +107,7 @@ end
 if exist('LSA_IVC_Crt_T_all', 'var')
     t_fighandle = figure('Name','LSA C-Rate vs. T_cell');
     contourf(LSAPara.bins_mean_T, LSAPara.bins_mean_Crt, LSA_IVC_Crt_T_all / sum(sum(LSA_IVC_Crt_T_all)));
-    title('LSA of SOC vs. cell temp');
+    title('LSA of C-Rate vs. T_cell');
     xlabel('Temperature in °C');
     ylabel('C-Rate in 1/h');
     c = colorbar;

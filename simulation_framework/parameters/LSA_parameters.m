@@ -26,13 +26,13 @@ max_val_SOC =  1.1;     % Upper border
 % Cell temperatures
 
 min_val_T = 20;         % Lower border
-max_val_T = 42;         % Upper border
+max_val_T = 30;         % Upper border
 
 
 % Cell C-Rates
 
-min_val_Crt = -4;        % Lower border
-max_val_Crt = 1;        % Upper border
+min_val_Crt = -1;        % Lower border
+max_val_Crt =  1;        % Upper border
 
 
 % Cell voltages

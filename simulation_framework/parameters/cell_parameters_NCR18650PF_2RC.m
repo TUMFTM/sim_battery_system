@@ -94,12 +94,24 @@ BatPara.electrical.dyn.C4(:,:,1)    = 1.0e+03 * [1.1468, 1.1468; 1.1468, 1.1468;
 BatPara.electrical.dyn.C4(:,:,2)    = 1.0e+03 * [0.9235, 0.9235; 1.5083, 1.5083; 2.1673, 2.1673; 2.5922, 2.5922; 2.1471, 2.1471; 1.6285, 1.6285; 2.4171, 2.4171; 2.5815, 2.5815; 2.6393, 2.6393; 2.5251, 2.5251; 2.5251, 2.5251];
 
 
-%% Thermal cell parameters
+%% Parameters needed for all thermal models
 
-BatPara.thermal.m    = 0.048;                               % cell mass in kg
-BatPara.thermal.c    = 700;                                 % specific heat capacity of cell in J/(kg*K)
-BatPara.thermal.A    = (2*((18^2)/4)*pi+18*pi*65)*10^(-6);  % heat conducting surface area of cell in m^2 (assuming a cylinder of 18650 cell dimensions)
-BatPara.thermal.EnCo = 0.0001;                              % Entropy Coefficient
+BatPara.physical.m    = 0.048;     % cell mass in kg
+BatPara.thermal.EnCo  = 0.0001;     % Entropy Coefficient (reversible heat generation)
+
+BatPara.thermal.c     = 700;        % specific heat capacity of cell in J/(kg*K)
+
+
+%% Parameters needed for simple thermal model (no thermal interaction between cells)
+
+% The simple thermal simulation assumes the cell as a lumped mass
+% exchanging heat with its environmental temperature T_cell_ambient and 
+% a heat transfer coefficient alpha_cell_ambient. Both depend on the system
+% architecture and therefore are specified in system_parameters.m
+
+% Therefore, regarding the cells only the heat transferring surface is needed.
+
+BatPara.physical.A = (2*((18^2)/4)*pi+18*pi*65)*10^(-6);  % heat transferring surface area of cell in m^2 (assuming a cylinder of 18650 cell dimensions)
 
 
 %% Statistical deviations between cells
@@ -130,7 +142,6 @@ BatPara.variances.electrical.C4  = 0;
 BatPara.variances.electrical.R1  = 0;
 BatPara.variances.electrical.C1  = 0;
 
-BatPara.variances.thermal.m    = 0;
-BatPara.variances.thermal.c    = 0.01;
-BatPara.variances.thermal.EnCo = 0;
-BatPara.variances.thermal.A    = 0;
+BatPara.variances.physical.m       = 0;
+BatPara.variances.thermal.c        = 0.01;
+BatPara.variances.thermal.EnCo     = 0;

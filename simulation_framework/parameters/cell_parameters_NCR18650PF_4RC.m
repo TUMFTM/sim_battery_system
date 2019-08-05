@@ -39,6 +39,7 @@ BatPara.electrical.dyn.C_rate       = [-1, 1];                                  
 % Note: For modelling reasons you must still provide table data for the 
 % disabled RC-elements, but it won't be considered for the simulation results.
 
+
 % Internal Resistance
 
 BatPara.electrical.dyn.R_0(:,:,1)   = [0.0336, 0.0276; 0.0327, 0.0270; 0.0329, 0.0269; 0.0325, 0.0264; 0.0316, 0.0267; 0.0321, 0.0267; 0.0322, 0.0266; 0.0313, 0.0264; 0.0310, 0.0265; 0.0314, 0.0265; 0.0323, 0.0269];
@@ -89,12 +90,24 @@ BatPara.electrical.dyn.C4(:,:,1)    = 1.0e+03 * [0.9235, 0.5601; 1.4821, 1.0207;
 BatPara.electrical.dyn.C4(:,:,2)    = 1.0e+03 * [0.7301, 1.1698; 1.2515, 1.8374; 1.3427, 2.0009; 1.4624, 2.0342; 1.5380, 2.0759; 1.4949, 2.2259; 1.2055, 1.8080; 1.2928, 1.9991; 1.1178, 1.7938; 0.9821, 1.2558; 0.6691, 0.9424];
 
 
-%% Thermal cell parameters
+%% Parameters needed for all thermal models
 
-BatPara.thermal.m    = 0.048;                               % cell mass in kg
-BatPara.thermal.c    = 700;                                 % specific heat capacity of cell in J/(kg*K)
-BatPara.thermal.A    = (2*((18^2)/4)*pi+18*pi*65)*10^(-6);  % heat conducting surface area of cell in m^2 (assuming a cylinder of 18650 cell dimensions)
-BatPara.thermal.EnCo = 0.0001;                              % Entropy Coefficient
+BatPara.physical.m    = 0.048;     % cell mass in kg
+BatPara.thermal.EnCo  = 0.0001;     % Entropy Coefficient (reversible heat generation)
+
+BatPara.thermal.c     = 700;        % specific heat capacity of cell in J/(kg*K)
+
+
+%% Parameters needed for simple thermal model (no thermal interaction between cells)
+
+% The simple thermal simulation assumes the cell as a lumped mass
+% exchanging heat with its environmental temperature T_cell_ambient and 
+% a heat transfer coefficient alpha_cell_ambient. Both depend on the system
+% architecture and therefore are specified in system_parameters.m
+
+% Therefore, regarding the cells only the heat transferring surface is needed.
+
+BatPara.physical.A = (2*((18^2)/4)*pi+18*pi*65)*10^(-6);  % heat transferring surface area of cell in m^2 (assuming a cylinder of 18650 cell dimensions)
 
 
 %% Statistical deviations between cells
@@ -125,7 +138,6 @@ BatPara.variances.electrical.C4  = 0;
 BatPara.variances.electrical.R1  = 0;
 BatPara.variances.electrical.C1  = 0;
 
-BatPara.variances.thermal.m    = 0;
-BatPara.variances.thermal.c    = 0.01;
-BatPara.variances.thermal.EnCo = 0;
-BatPara.variances.thermal.A    = 0;
+BatPara.variances.physical.m       = 0;
+BatPara.variances.thermal.c        = 0.01;
+BatPara.variances.thermal.EnCo     = 0;

@@ -14,7 +14,7 @@ SysPara.DeviationMap.R1   = 1 + randn(SysPara.p,SysPara.s)*BatPara.variances.ele
 SysPara.DeviationMap.R2   = 1 + randn(SysPara.p,SysPara.s)*BatPara.variances.electrical.R2;
 SysPara.DeviationMap.R3   = 1 + randn(SysPara.p,SysPara.s)*BatPara.variances.electrical.R3;
 SysPara.DeviationMap.R4   = 1 + randn(SysPara.p,SysPara.s)*BatPara.variances.electrical.R4;
-SysPara.DeviationMap.m    = 1 + randn(SysPara.p,SysPara.s)*BatPara.variances.thermal.m;
+
+SysPara.DeviationMap.m    = 1 + randn(SysPara.p,SysPara.s)*BatPara.variances.physical.m;
 SysPara.DeviationMap.c    = 1 + randn(SysPara.p,SysPara.s)*BatPara.variances.thermal.c;
 SysPara.DeviationMap.EnCo = 1 + randn(SysPara.p,SysPara.s)*BatPara.variances.thermal.EnCo;
-SysPara.DeviationMap.A    = 1 + randn(SysPara.p,SysPara.s)*BatPara.variances.thermal.A;
