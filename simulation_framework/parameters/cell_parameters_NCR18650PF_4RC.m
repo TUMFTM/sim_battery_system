@@ -93,9 +93,9 @@ BatPara.electrical.dyn.C4(:,:,2)    = 1.0e+03 * [0.7301, 1.1698; 1.2515, 1.8374;
 %% Parameters needed for all thermal models
 
 BatPara.physical.m    = 0.048;     % cell mass in kg
-BatPara.thermal.EnCo  = 0.0001;     % Entropy Coefficient (reversible heat generation)
+BatPara.thermal.EnCo  = 0.0001;    % Entropy Coefficient (reversible heat generation)
 
-BatPara.thermal.c     = 700;        % specific heat capacity of cell in J/(kg*K)
+BatPara.thermal.c     = 700;       % specific heat capacity of cell in J/(kg*K)
 
 
 %% Parameters needed for simple thermal model (no thermal interaction between cells)

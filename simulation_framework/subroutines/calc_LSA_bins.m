@@ -1,5 +1,7 @@
 function [bins_mean, bins_borders] = calc_LSA_bins(no_bins, min_val, max_val)
 
+% Function to calculate the bins and bin borders for load spectrum analysis
+
 %% Check input plausibility
 
 if min_val >= max_val

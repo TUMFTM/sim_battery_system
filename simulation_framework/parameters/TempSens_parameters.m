@@ -1,15 +1,26 @@
 %% Info
 
 % This script defines the temperature sensor positions in the battery
-% system. The cells are numbered from 
+% system. You must specify what cells are part of one temperature sensor.
+% The definition is done via the cell ID. They can be visualized by running 
+% the following function:
+
+% plot_system_geometry(SysPara.s, SysPara.pe, SysPara.e)
 
 
-%% Settings
+%% Sensor definitons
 
-% Chose TempSensMode
+% Define the sensor ranges in the folling form:
 
-% 'auto':   Automatic placement of sensors involving many assumptions
-% 'manual': Specify sensor position and thermal influences on your own
+% SysPara.thermal.sensors.ranges = {[Sensor 1], [Sensor 2], [Sensor 3]};
+% Provide [Sensor x] as row vectors
 
-SysPara.TempSens.mode = 'auto';  % or 'manual'
+% An example is provided below:
+
+SysPara.thermal.sensors.ranges = {...
+    [1,2,3],...
+    [4,5],...
+    6};
+
+% As you can see, the vectors do not need to have the same length.
 

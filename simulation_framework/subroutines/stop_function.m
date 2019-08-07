@@ -13,8 +13,28 @@ if SimPara.LoggingOutput == false
 end
 
 
+%% Clear all thermal outputs if thermal sim is disabled
+if SimPara.thermal_sim_enable == false
+   clearvars T_sensors T_cell PQ_transfer PQ_ambient PQ_cell
+   clearvars SysPara.TempSens
+end
+
+
 %% Clear temperature sensore dummy data if disabled
-if SimPara.TempSensors == false
-    clearvars T_sensors
-    clearvars SysPara.TempSens
+if SimPara.TempSensors_enable == false
+   clearvars T_sensors
+   clearvars SysPara.TempSens
+end
+
+
+%% Clear heat transfer simulation dummy data is disabled
+if SimPara.heat_exchange_enable == false
+   clearvars PQ_transfer
+   clearvars SysPara.thermal.transfer
+end
+
+
+%% Clear additional geometric information if heat transfer and temp sensors are disabled
+if SimPara.heat_exchange_enable == false && SimPara.TempSensors_enable == false
+    clearvars SysPara.pe SysPara.e
 end

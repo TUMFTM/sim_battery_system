@@ -15,8 +15,6 @@ no_bins_delta_Crt = 20;   % Number of bins for delta C-Rate between cells
 % This, together with the bin sizes specified above will determine the bins
 % for the load spectrum analysis
 
-% Example:
-
 % SOC
 
 min_val_SOC = -0.1;     % Lower border

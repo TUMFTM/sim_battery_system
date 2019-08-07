@@ -1,5 +1,5 @@
 % Calculate the normal distributed parameter deviations using the values
-% defined in parameters\cell_parameters_XXXX.m. Optinally also specific
+% defined in parameters\cell_parameters_XXXX.m. Optionally also specific
 % deviation can be assigned to each cell.
 
 disp('Calculate statistic deviations.')

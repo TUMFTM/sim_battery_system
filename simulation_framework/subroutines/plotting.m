@@ -399,9 +399,50 @@ if SimPara.PlotResults == true || SimPara.SavePlots == true
         end
     end
     
+    % Ambient heat transfer
+    if exist('PQ_ambient', 'var')
+        t_fighandle = figure('Name','Ambient heat transfer');
+        plot(PQ_ambient);
+        grid on;
+        axis tight;
+        title('Ambient heat transfer');
+        xlabel('Time in seconds');
+        ylabel('Heat flux in W');
+        legend(t_ListLegend);
+        if SimPara.SavePlots == true
+            savefig(t_fighandle, join([t_figfolder, 'PQ_ambient.fig'],''), 'compact');
+        end
+    end
+    
+    % Heat transfer between cells
+    if exist('PQ_transfer', 'var')
+        t_fighandle = figure('Name','Heat transfer between cells');
+        plot(PQ_transfer);
+        grid on;
+        axis tight;
+        title('Heat transfer between cells');
+        xlabel('Time in seconds');
+        ylabel('Heat flux in W');
+        legend(t_ListLegend);
+        if SimPara.SavePlots == true
+            savefig(t_fighandle, join([t_figfolder, 'PQ_transfer.fig'],''), 'compact');
+        end
+    end
+    
     % Create Plots for load spectrum analysis
     run('plotting_LSA.m')
     
+    % Create Plots for system geometry
+    if isfield(SysPara, 'e')
+        plot_system_geometry(SysPara.s, SysPara.pe, SysPara.e, SimPara, t_figfolder)
+    end
+    
+    % Create plot for thermal system architecture
+    if SimPara.heat_exchange_enable == true
+        plot_thermal_sys_archit(SysPara.thermal.transfer.K_transfer, SimPara, t_figfolder)
+    end
+        
+        
     if SimPara.PlotResults == false
         disp('Closing Plots.')
         close all       % No display of plots was wished, so they are closed after saving
