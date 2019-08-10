@@ -75,7 +75,7 @@ t_geometric_info = 'parameters/geometric_system_parameters.m';
 
 % Note: If activated this has a significant impact on execution time!
 
-SimPara.heat_exchange_enable = true; 
+SimPara.heat_exchange_enable = true;        % Turn heat exchange between cells on/off
 
 run parameters/heat_transfer_parameters.m   % Parameters for heat transfer submodel
 
@@ -90,9 +90,9 @@ run parameters/heat_transfer_parameters.m   % Parameters for heat transfer submo
 % SysPara.p and SysPara.s from 'system_parameters.m' get overwritten if 
 % this system is activated!
 
-SimPara.TempSensors_enable = false;
+SimPara.TempSensors_enable = false;     % Turn temp. sensors on/off
 
-run parameters/TempSens_parameters.m
+run parameters/TempSens_parameters.m    % Parameters for temperature sensors
 
 
 %% Load Spectrum Analysis of simulation data
@@ -108,7 +108,7 @@ run parameters/TempSens_parameters.m
 % computational load for large battery systems! Test this impact before you
 % turn on everything!
 
-SimPara.LoadSpectra     = false;        % Turn LSA on/off
+SimPara.LoadSpectra_enable = false;     % Turn LSA on/off
 
 run parameters/LSA_parameters.m         % Parameters for Load Spectrum Analysis
 
