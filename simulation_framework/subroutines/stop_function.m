@@ -1,7 +1,7 @@
 % Will get executed after the simulation stops
 
 %% Clear LSA dummy values if disabled
-if SimPara.LoadSpectra == false
+if SimPara.LoadSpectra_enable == false
    clearvars LSA*
 end
 
