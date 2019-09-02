@@ -121,6 +121,8 @@ The model does not limit battery SOC, so it is possible to get SOCs >1 and <0 in
 The model supports two types of thermal simulation. The first type disregards any thermal interaction with the environment and just simulates heat transfer for each cell to its environment, defined by the temperature gradient between cell and its surroundings and a heat transfer coefficient.
 The second option works *in addition to the first* and also simulates the heat fluxes between the cells. Heat fluxes in all spacial direction are supported, so for this case it is not sufficient to just provide the number of cells in serial and parallel. The model also needs information about how the cells are oriented. This is done by defining the number of layers the cells are placed in. Refer to `geometric_system_parameters.m` for further information.
 
+Currently the framework assumes constant ambient temperatures and heat transfer coefficients for each cell. Those can also be dynamic and therefore be used for simulation of a battery thermal management system (BTMS). This is implemented in [sim_BTMS](https://github.com/TUMFTM/sim_BTMS) building upon this simulation framework. Refer to the linked repo for further information.
+
 
 
 ## Roadmap
