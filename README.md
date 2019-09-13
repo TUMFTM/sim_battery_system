@@ -14,9 +14,9 @@ This is a model for the simulation of lithium-ion battery systems of any number 
 
 Further information about the modelling approach and the validation of the model can be found in the following publication:
 
-*Reiter Et al.: A Holistic Approach for Simulation and Evaluation of Electrical and Thermal Loads in Lith-ium-Ion Battery Systems. In: 2019 Fourteenth International Conference on Ecological Vehicles and Re-newable Energies (EVER). Monaco. IEEE. 2019. Forthcoming.* 
+Reiter, Christoph; Wildfeuer, Leo; Wassiliadis, Nikolaos; Krahl, Thilo; Dirnecker, Johannes; Lienkamp, Markus (2019): **A Holistic Approach for Simulation and Evaluation of Electrical and Thermal Loads in Lithium-Ion Battery Systems**. In: 2019 Fourteenth International Conference on Ecological Vehicles and Renewable Energies (EVER). Monte-Carlo, Monaco, 08.05.2019 - 10.05.2019. IEEE: IEEE, S. 1–17.
 
-(DOI and Link follow as soon as the paper is published.)
+DOI: [10.1109/EVER.2019.8813640](https://doi.org/10.1109/EVER.2019.8813640)
 
 
 
@@ -166,3 +166,4 @@ The authors want to thank the following persons, who, whith their brilliant cont
 - Michael Baumann
   - Providing advice for cell modelling and cell measurements and parameter fitting of the 2 RC ECM.
   - Being an awesome colleague and office mate at the insitute. 
+
